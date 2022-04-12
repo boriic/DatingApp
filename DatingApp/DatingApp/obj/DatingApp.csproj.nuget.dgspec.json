@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Filip\\source\\repos\\DatingApp\\DatingApp\\DatingApp.csproj": {}
+    "C:\\Users\\Filip\\Documents\\DatingApp\\DatingApp\\DatingApp\\DatingApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Filip\\source\\repos\\DatingApp\\DatingApp\\DatingApp.csproj": {
+    "C:\\Users\\Filip\\Documents\\DatingApp\\DatingApp\\DatingApp\\DatingApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Filip\\source\\repos\\DatingApp\\DatingApp\\DatingApp.csproj",
+        "projectUniqueName": "C:\\Users\\Filip\\Documents\\DatingApp\\DatingApp\\DatingApp\\DatingApp.csproj",
         "projectName": "DatingApp",
-        "projectPath": "C:\\Users\\Filip\\source\\repos\\DatingApp\\DatingApp\\DatingApp.csproj",
+        "projectPath": "C:\\Users\\Filip\\Documents\\DatingApp\\DatingApp\\DatingApp\\DatingApp.csproj",
         "packagesPath": "C:\\Users\\Filip\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Filip\\source\\repos\\DatingApp\\DatingApp\\obj\\",
+        "outputPath": "C:\\Users\\Filip\\Documents\\DatingApp\\DatingApp\\DatingApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Filip\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[5.0.6, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
