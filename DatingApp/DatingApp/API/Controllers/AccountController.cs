@@ -32,7 +32,7 @@ namespace DatingApp.API.Controllers
 
             var user = new AppUser
             {
-                UserName = registerDto.Username.ToLower(),
+                UserName = registerDto.Username,
                 PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
                 PaswordSalt = hmac.Key
             };
@@ -47,7 +47,7 @@ namespace DatingApp.API.Controllers
         public async Task<ActionResult<AppUser>> Login(LoginDto loginDto)
         {
             var user = await _context.Users
-                .SingleOrDefaultAsync(x => x.UserName.Equals(loginDto.Username.ToLower()));
+                .SingleOrDefaultAsync(x => x.UserName.Equals(loginDto.Username));
 
             if (user == null) return Unauthorized("Invalid username");
 

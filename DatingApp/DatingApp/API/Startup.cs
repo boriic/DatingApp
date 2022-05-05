@@ -1,3 +1,5 @@
+using DatingApp.API.Interfaces;
+using DatingApp.API.Services;
 using DatingApp.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,6 +30,7 @@ namespace DatingApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ITokenService, TokenService>();
             services.AddDbContext<DataContext>(options =>
             {
                 //for some reason get connection string method is not working, returns empty connection string from appsettings.json
