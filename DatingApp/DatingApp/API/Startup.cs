@@ -13,7 +13,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace DatingApp
@@ -34,7 +36,7 @@ namespace DatingApp
             services.AddDbContext<DataContext>(options =>
             {
                 //for some reason get connection string method is not working, returns empty connection string from appsettings.json
-                options.UseSqlite("Data source=datingapp.db");
+                options.UseSqlite(_config.GetConnectionString("DefaultConnection"));
             });
             services.AddControllers();
             services.AddSwaggerGen(c =>

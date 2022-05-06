@@ -21,6 +21,12 @@ namespace DatingApp
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                }).ConfigureAppConfiguration(x =>
+                {
+                    x.SetBasePath(Environment.CurrentDirectory);
+                    x.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+                    x.AddEnvironmentVariables();
+                    x.Build();
                 });
     }
 }
