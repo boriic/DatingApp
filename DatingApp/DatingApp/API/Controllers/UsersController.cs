@@ -22,7 +22,7 @@ namespace DatingApp.API.Controllers
 
         // get list of all users
         [HttpGet]
-        [Authorize]
+        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
         {
             return await _context.Users.ToListAsync();
