@@ -1,4 +1,5 @@
-﻿using DatingApp.API.Interfaces;
+﻿using DatingApp.API.Helpers;
+using DatingApp.API.Interfaces;
 using DatingApp.API.Repository;
 using DatingApp.API.Repository.Common;
 using DatingApp.API.Services;
@@ -19,6 +20,7 @@ namespace DatingApp.API.Extensions
         {
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddDbContext<DataContext>(options =>
             {
                 //for some reason get connection string method is not working, returns empty connection string from appsettings.json

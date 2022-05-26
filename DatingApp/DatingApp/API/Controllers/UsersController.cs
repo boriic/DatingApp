@@ -1,4 +1,6 @@
-﻿using DatingApp.API.Repository.Common;
+﻿using AutoMapper;
+using DatingApp.API.DTOs;
+using DatingApp.API.Repository.Common;
 using DatingApp.Data;
 using DatingApp.Entities;
 using Microsoft.AspNetCore.Authorization;
@@ -15,25 +17,28 @@ namespace DatingApp.API.Controllers
     public class UsersController : BaseApiController
     {
         private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
 
-        public UsersController(IUserRepository userRepository)
+        public UsersController(IUserRepository userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
+            _mapper = mapper;
         }
 
         // get list of all users
         [AllowAnonymous]
-        public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<MemberDTO>>> GetUsers()
         {
-            var users = await _userRepository.GetUsersAsync();
+            var users = _userRepository.GetMembersAsync();
+
             return Ok(users);
         }
 
         // get user by username
         [HttpGet("{username}")]
-        public async Task<ActionResult<AppUser>> GetUser(string username)
+        public async Task<ActionResult<MemberDTO>> GetUser(string username)
         {
-            return await _userRepository.GetUserByUsernameAsync(username);
+            return await _userRepository.GetMemberAsync(username);
         }
     }
 }
