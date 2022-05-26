@@ -1,4 +1,6 @@
 ﻿using DatingApp.API.Interfaces;
+using DatingApp.API.Repository;
+using DatingApp.API.Repository.Common;
 using DatingApp.API.Services;
 using DatingApp.Data;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +18,7 @@ namespace DatingApp.API.Extensions
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration _config)
         {
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddDbContext<DataContext>(options =>
             {
                 //for some reason get connection string method is not working, returns empty connection string from appsettings.json
