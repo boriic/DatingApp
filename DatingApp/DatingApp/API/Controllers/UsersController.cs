@@ -17,19 +17,17 @@ namespace DatingApp.API.Controllers
     public class UsersController : BaseApiController
     {
         private readonly IUserRepository _userRepository;
-        private readonly IMapper _mapper;
 
         public UsersController(IUserRepository userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
-            _mapper = mapper;
         }
 
         // get list of all users
         [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<MemberDTO>>> GetUsers()
         {
-            var users = _userRepository.GetMembersAsync();
+            var users = await _userRepository.GetMembersAsync();
 
             return Ok(users);
         }
@@ -38,7 +36,9 @@ namespace DatingApp.API.Controllers
         [HttpGet("{username}")]
         public async Task<ActionResult<MemberDTO>> GetUser(string username)
         {
-            return await _userRepository.GetMemberAsync(username);
+            var user = await _userRepository.GetMemberAsync(username);
+
+            return Ok(user); 
         }
     }
 }
